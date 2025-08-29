@@ -7,7 +7,7 @@ const Header = () => {
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 bg-gradient-primary rounded-lg shadow-glow"></div>
           <h1 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-            sussigys amongs
+            Steal a Brainrot
           </h1>
         </div>
         
