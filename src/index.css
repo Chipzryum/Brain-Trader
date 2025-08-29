@@ -8,35 +8,59 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Gaming-inspired dark theme */
+    --background: 220 27% 8%;
+    --foreground: 210 40% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 220 27% 10%;
+    --card-foreground: 210 40% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 27% 10%;
+    --popover-foreground: 210 40% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Vibrant purple primary */
+    --primary: 270 95% 65%;
+    --primary-foreground: 220 27% 8%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Subtle gaming secondary */
+    --secondary: 220 27% 15%;
+    --secondary-foreground: 210 40% 95%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 27% 12%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Cyan accent for highlights */
+    --accent: 180 100% 50%;
+    --accent-foreground: 220 27% 8%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 27% 18%;
+    --input: 220 27% 15%;
+    --ring: 270 95% 65%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Custom gaming colors */
+    --neon-purple: 270 95% 65%;
+    --neon-cyan: 180 100% 50%;
+    --neon-pink: 330 100% 70%;
+    --game-dark: 220 27% 8%;
+    --game-surface: 220 27% 12%;
+    --game-elevated: 220 27% 15%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(270 95% 65%), hsl(330 100% 70%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 27% 8%) 0%, hsl(220 27% 12%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(220 27% 10%) 0%, hsl(220 27% 12%) 100%);
+
+    /* Shadows and effects */
+    --shadow-glow: 0 0 30px hsl(270 95% 65% / 0.3);
+    --shadow-neon: 0 0 20px hsl(180 100% 50% / 0.4);
+    --shadow-card: 0 8px 32px hsl(220 27% 4% / 0.6);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
