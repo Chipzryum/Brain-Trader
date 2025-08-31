@@ -1,27 +1,34 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Marketplace from "@/components/Marketplace";
-import CreateTradeForm from "@/components/CreateTradeForm";
+import ExampleTrade from "@/components/ExampleTrade";
+import { Card } from "@/components/ui/card";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        <Hero />
-        
-        {/* Create Trade Section */}
-        <section id="create" className="py-16 px-4 bg-game-surface">
+        {/* Hero with Example Trade */}
+        <section className="py-16 px-4">
           <div className="container mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
-                Create Your Trade
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Post your items and find the perfect trading partner. It's quick, easy, and secure.
-              </p>
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
+              {/* Left side - Example Trade */}
+              <div className="order-2 lg:order-1">
+                <div className="mb-6">
+                  <h2 className="text-2xl font-bold mb-2 text-gamer-purple">Live Trade Example</h2>
+                  <p className="text-muted-foreground">See how trades work on our platform</p>
+                </div>
+                <Card className="p-6 bg-game-surface border-border">
+                  <ExampleTrade />
+                </Card>
+              </div>
+              
+              {/* Right side - Hero Content */}
+              <div className="order-1 lg:order-2">
+                <Hero />
+              </div>
             </div>
-            <CreateTradeForm />
           </div>
         </section>
 
@@ -37,7 +44,7 @@ const Index = () => {
             <div className="grid md:grid-cols-3 gap-8 mt-12">
               <div className="space-y-4">
                 <div className="w-16 h-16 bg-gradient-primary rounded-full mx-auto shadow-glow"></div>
-                <h3 className="text-xl font-bold text-neon-cyan">Secure Trading</h3>
+                <h3 className="text-xl font-bold text-gamer-teal">Secure Trading</h3>
                 <p className="text-muted-foreground">
                   Advanced security measures to protect your items and personal information.
                 </p>
@@ -45,7 +52,7 @@ const Index = () => {
               
               <div className="space-y-4">
                 <div className="w-16 h-16 bg-gradient-primary rounded-full mx-auto shadow-glow"></div>
-                <h3 className="text-xl font-bold text-neon-purple">Fast Matching</h3>
+                <h3 className="text-xl font-bold text-gamer-purple">Fast Matching</h3>
                 <p className="text-muted-foreground">
                   Smart algorithms to find the perfect trading partners for your items.
                 </p>
@@ -53,7 +60,7 @@ const Index = () => {
               
               <div className="space-y-4">
                 <div className="w-16 h-16 bg-gradient-primary rounded-full mx-auto shadow-glow"></div>
-                <h3 className="text-xl font-bold text-neon-pink">Community Driven</h3>
+                <h3 className="text-xl font-bold text-gamer-orange">Community Driven</h3>
                 <p className="text-muted-foreground">
                   Join thousands of players in the most active Steal a Brainrot trading community.
                 </p>
@@ -75,9 +82,9 @@ const Index = () => {
             </div>
             
             <div className="flex gap-6 text-sm text-muted-foreground">
-              <a href="#" className="hover:text-neon-cyan transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-neon-cyan transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-neon-cyan transition-colors">Contact</a>
+              <a href="#" className="hover:text-gamer-teal transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-gamer-teal transition-colors">Terms of Service</a>
+              <a href="#" className="hover:text-gamer-teal transition-colors">Contact</a>
             </div>
           </div>
           

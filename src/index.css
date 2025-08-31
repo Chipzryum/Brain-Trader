@@ -8,60 +8,60 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Vibrant light theme */
-    --background: 0 0% 100%;
-    --foreground: 240 10% 10%;
+    /* Dark gamer theme - easy on the eyes */
+    --background: 220 23% 11%;
+    --foreground: 210 40% 92%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 10%;
+    --card: 220 23% 13%;
+    --card-foreground: 210 40% 92%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 10%;
+    --popover: 220 23% 13%;
+    --popover-foreground: 210 40% 92%;
 
-    /* Electric purple primary */
-    --primary: 270 100% 60%;
-    --primary-foreground: 0 0% 100%;
+    /* Subdued purple primary */
+    --primary: 260 45% 55%;
+    --primary-foreground: 210 40% 98%;
 
-    /* Bright gaming secondary */
-    --secondary: 280 100% 95%;
-    --secondary-foreground: 270 100% 40%;
+    /* Muted gaming secondary */
+    --secondary: 220 23% 17%;
+    --secondary-foreground: 210 40% 92%;
 
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%;
+    --muted: 220 23% 15%;
+    --muted-foreground: 215 20% 65%;
 
-    /* Vibrant cyan accent */
-    --accent: 180 100% 45%;
-    --accent-foreground: 0 0% 100%;
+    /* Calmer teal accent */
+    --accent: 180 35% 45%;
+    --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 90% 55%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 240 6% 90%;
-    --input: 240 6% 96%;
-    --ring: 270 100% 60%;
+    --border: 220 23% 20%;
+    --input: 220 23% 15%;
+    --ring: 260 45% 55%;
 
     --radius: 0.75rem;
 
-    /* Vibrant gaming colors */
-    --neon-purple: 270 100% 60%;
-    --neon-cyan: 180 100% 45%;
-    --neon-pink: 330 100% 60%;
-    --neon-orange: 30 100% 55%;
-    --neon-green: 120 100% 40%;
-    --game-light: 0 0% 100%;
-    --game-surface: 280 100% 98%;
-    --game-elevated: 280 50% 96%;
+    /* Subdued gaming colors */
+    --gamer-purple: 260 45% 55%;
+    --gamer-teal: 180 35% 45%;
+    --gamer-orange: 25 75% 55%;
+    --gamer-green: 120 40% 45%;
+    --gamer-red: 0 65% 55%;
+    --game-dark: 220 23% 11%;
+    --game-surface: 220 23% 13%;
+    --game-elevated: 220 23% 17%;
 
-    /* Vibrant gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(270 100% 60%), hsl(330 100% 60%));
-    --gradient-hero: linear-gradient(135deg, hsl(280 100% 98%) 0%, hsl(270 50% 95%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(280 50% 98%) 100%);
-    --gradient-vibrant: linear-gradient(135deg, hsl(180 100% 45%), hsl(270 100% 60%));
+    /* Subtle gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(260 45% 55%), hsl(180 35% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 23% 11%) 0%, hsl(220 23% 15%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(220 23% 13%) 0%, hsl(220 23% 15%) 100%);
+    --gradient-subtle: linear-gradient(135deg, hsl(220 23% 13%), hsl(220 23% 17%));
 
-    /* Vibrant shadows and effects */
-    --shadow-glow: 0 0 40px hsl(270 100% 60% / 0.4);
-    --shadow-neon: 0 0 30px hsl(180 100% 45% / 0.5);
-    --shadow-card: 0 8px 32px hsl(270 50% 85% / 0.3);
+    /* Gentle shadows and effects */
+    --shadow-glow: 0 0 25px hsl(260 45% 55% / 0.25);
+    --shadow-accent: 0 0 20px hsl(180 35% 45% / 0.2);
+    --shadow-card: 0 8px 32px hsl(220 23% 8% / 0.4);
 
     --radius: 0.75rem;
 

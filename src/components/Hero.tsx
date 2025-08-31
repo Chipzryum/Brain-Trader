@@ -24,10 +24,10 @@ const Hero = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button variant="neon" size="lg" className="min-w-[200px]">
-            Start Trading Now
+          <Button variant="default" size="lg" className="min-w-[200px] bg-gradient-primary hover:opacity-90">
+            Register Now
           </Button>
-          <Button variant="cyber" size="lg" className="min-w-[200px]">
+          <Button variant="outline" size="lg" className="min-w-[200px]">
             Browse Marketplace
           </Button>
         </div>
@@ -35,15 +35,15 @@ const Hero = () => {
         {/* Stats */}
         <div className="grid grid-cols-3 gap-8 mt-16 max-w-md mx-auto">
           <div className="text-center">
-            <div className="text-3xl font-bold text-neon-cyan">1,234</div>
+            <div className="text-3xl font-bold text-gamer-teal">1,234</div>
             <div className="text-sm text-muted-foreground">Active Trades</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-neon-purple">5,678</div>
+            <div className="text-3xl font-bold text-gamer-purple">5,678</div>
             <div className="text-sm text-muted-foreground">Happy Traders</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-neon-pink">99.9%</div>
+            <div className="text-3xl font-bold text-gamer-orange">99.9%</div>
             <div className="text-sm text-muted-foreground">Success Rate</div>
           </div>
         </div>
