@@ -1,36 +1,13 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Marketplace from "@/components/Marketplace";
-import ExampleTrade from "@/components/ExampleTrade";
-import { Card } from "@/components/ui/card";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        {/* Hero with Example Trade */}
-        <section className="py-16 px-4">
-          <div className="container mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-start">
-              {/* Left side - Example Trade */}
-              <div className="order-2 lg:order-1">
-                <div className="mb-6">
-                  <h2 className="text-2xl font-bold mb-2 text-gamer-purple">Live Trade Example</h2>
-                  <p className="text-muted-foreground">See how trades work on our platform</p>
-                </div>
-                <Card className="p-6 bg-game-surface border-border">
-                  <ExampleTrade />
-                </Card>
-              </div>
-              
-              {/* Right side - Hero Content */}
-              <div className="order-1 lg:order-2">
-                <Hero />
-              </div>
-            </div>
-          </div>
-        </section>
+        <Hero />
 
         <Marketplace />
         

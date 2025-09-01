@@ -1,0 +1,231 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Search, Filter, ArrowUpDown } from "lucide-react";
+import TradeDetail from "@/components/TradeDetail";
+
+interface Trade {
+  id: string;
+  trader: string;
+  avatar: string;
+  offering: string[];
+  requesting: string[];
+  status: "active" | "completed" | "pending";
+  createdAt: string;
+}
+
+const mockTrades: Trade[] = [
+  {
+    id: "1",
+    trader: "ChipzRyum",
+    avatar: "/placeholder.svg",
+    offering: ["La Vacca Saturno Saturnito", "Rare Hat"],
+    requesting: ["La Grande Combinasion", "Epic Sword"],
+    status: "active",
+    createdAt: "2 hours ago"
+  },
+  {
+    id: "2", 
+    trader: "SamTheTrader",
+    avatar: "/placeholder.svg",
+    offering: ["Legendary Shield", "Magic Potion"],
+    requesting: ["Dragon Scale", "Fire Crystal"],
+    status: "pending",
+    createdAt: "5 hours ago"
+  },
+  {
+    id: "3",
+    trader: "NoobMaster69",
+    avatar: "/placeholder.svg", 
+    offering: ["Basic Sword", "Health Potion"],
+    requesting: ["Better Armor", "Speed Boost"],
+    status: "active",
+    createdAt: "1 day ago"
+  }
+];
+
+const Trades = () => {
+  const [selectedTrade, setSelectedTrade] = useState<Trade | null>(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [statusFilter, setStatusFilter] = useState("all");
+  const [sortBy, setSortBy] = useState("recent");
+
+  const filteredTrades = mockTrades.filter(trade => {
+    const matchesSearch = trade.trader.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         trade.offering.some(item => item.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                         trade.requesting.some(item => item.toLowerCase().includes(searchTerm.toLowerCase()));
+    const matchesStatus = statusFilter === "all" || trade.status === statusFilter;
+    return matchesSearch && matchesStatus;
+  });
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "active": return "bg-success text-success-foreground";
+      case "completed": return "bg-muted text-muted-foreground";
+      case "pending": return "bg-warning text-warning-foreground";
+      default: return "bg-muted text-muted-foreground";
+    }
+  };
+
+  if (selectedTrade) {
+    return <TradeDetail trade={selectedTrade} onBack={() => setSelectedTrade(null)} />;
+  }
+
+  return (
+    <div className="min-h-screen bg-background">
+      <div className="flex">
+        {/* Sidebar with filters */}
+        <div className="w-80 border-r border-border bg-card p-6 min-h-screen">
+          <div className="space-y-6">
+            <div>
+              <h2 className="text-xl font-bold mb-4">Filters & Search</h2>
+              
+              {/* Search */}
+              <div className="relative mb-4">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                <Input
+                  placeholder="Search trades..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10"
+                />
+              </div>
+            </div>
+
+            {/* Status Filter */}
+            <div>
+              <label className="text-sm font-medium mb-2 block">Status</label>
+              <Select value={statusFilter} onValueChange={setStatusFilter}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Status</SelectItem>
+                  <SelectItem value="active">Active</SelectItem>
+                  <SelectItem value="pending">Pending</SelectItem>
+                  <SelectItem value="completed">Completed</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Sort */}
+            <div>
+              <label className="text-sm font-medium mb-2 block">Sort By</label>
+              <Select value={sortBy} onValueChange={setSortBy}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="recent">Most Recent</SelectItem>
+                  <SelectItem value="oldest">Oldest First</SelectItem>
+                  <SelectItem value="trader">Trader Name</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Quick Filters */}
+            <div>
+              <label className="text-sm font-medium mb-2 block">Quick Filters</label>
+              <div className="space-y-2">
+                <Button variant="outline" size="sm" className="w-full justify-start">
+                  <Filter className="h-4 w-4 mr-2" />
+                  My Interests
+                </Button>
+                <Button variant="outline" size="sm" className="w-full justify-start">
+                  <ArrowUpDown className="h-4 w-4 mr-2" />
+                  High Value Items
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Main content */}
+        <div className="flex-1 p-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="mb-6">
+              <h1 className="text-3xl font-bold mb-2">Active Trades</h1>
+              <p className="text-muted-foreground">
+                Found {filteredTrades.length} trades matching your criteria
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {filteredTrades.map((trade) => (
+                <Card 
+                  key={trade.id} 
+                  className="hover:shadow-lg transition-all duration-200 cursor-pointer border-border hover:border-primary/50"
+                  onClick={() => setSelectedTrade(trade)}
+                >
+                  <CardHeader className="pb-3">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <Avatar className="h-10 w-10">
+                          <AvatarImage src={trade.avatar} alt={trade.trader} />
+                          <AvatarFallback>{trade.trader.slice(0, 2).toUpperCase()}</AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <h3 className="font-semibold">{trade.trader}</h3>
+                          <p className="text-sm text-muted-foreground">{trade.createdAt}</p>
+                        </div>
+                      </div>
+                      <Badge className={getStatusColor(trade.status)}>
+                        {trade.status}
+                      </Badge>
+                    </div>
+                  </CardHeader>
+                  
+                  <CardContent>
+                    <div className="grid grid-cols-2 gap-6">
+                      <div>
+                        <h4 className="text-sm font-medium text-primary mb-2">Offering:</h4>
+                        <div className="flex flex-wrap gap-1">
+                          {trade.offering.map((item, index) => (
+                            <Badge key={index} variant="secondary" className="text-xs">
+                              {item}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <h4 className="text-sm font-medium text-accent mb-2">Requesting:</h4>
+                        <div className="flex flex-wrap gap-1">
+                          {trade.requesting.map((item, index) => (
+                            <Badge key={index} variant="outline" className="text-xs">
+                              {item}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            {filteredTrades.length === 0 && (
+              <Card className="text-center py-12">
+                <CardContent>
+                  <p className="text-muted-foreground mb-4">No trades found matching your criteria</p>
+                  <Button variant="outline" onClick={() => {
+                    setSearchTerm("");
+                    setStatusFilter("all");
+                  }}>
+                    Clear Filters
+                  </Button>
+                </CardContent>
+              </Card>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Trades;
