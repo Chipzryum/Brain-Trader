@@ -14,6 +14,7 @@ interface Trade {
   avatar: string;
   offering: string[];
   requesting: string[];
+  rarity: "Common" | "Rare" | "Epic" | "Legendary" | "Mythic" | "Brainrot God" | "Secret" | "OG";
   status: "active" | "completed" | "pending";
   createdAt: string;
 }
@@ -25,6 +26,7 @@ const mockTrades: Trade[] = [
     avatar: "/placeholder.svg",
     offering: ["La Vacca Saturno Saturnito", "Rare Hat"],
     requesting: ["La Grande Combinasion", "Epic Sword"],
+    rarity: "Epic",
     status: "active",
     createdAt: "2 hours ago"
   },
@@ -34,6 +36,7 @@ const mockTrades: Trade[] = [
     avatar: "/placeholder.svg",
     offering: ["Legendary Shield", "Magic Potion"],
     requesting: ["Dragon Scale", "Fire Crystal"],
+    rarity: "Legendary",
     status: "pending",
     createdAt: "5 hours ago"
   },
@@ -43,6 +46,7 @@ const mockTrades: Trade[] = [
     avatar: "/placeholder.svg", 
     offering: ["Basic Sword", "Health Potion"],
     requesting: ["Better Armor", "Speed Boost"],
+    rarity: "Common",
     status: "active",
     createdAt: "1 day ago"
   }
@@ -51,15 +55,17 @@ const mockTrades: Trade[] = [
 const Trades = () => {
   const [selectedTrade, setSelectedTrade] = useState<Trade | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const [statusFilter, setStatusFilter] = useState("all");
+  const [rarityFilter, setRarityFilter] = useState("all");
+  const [selectedTraits, setSelectedTraits] = useState<string[]>([]);
+  const [mutationFilter, setMutationFilter] = useState("all");
   const [sortBy, setSortBy] = useState("recent");
 
   const filteredTrades = mockTrades.filter(trade => {
     const matchesSearch = trade.trader.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          trade.offering.some(item => item.toLowerCase().includes(searchTerm.toLowerCase())) ||
                          trade.requesting.some(item => item.toLowerCase().includes(searchTerm.toLowerCase()));
-    const matchesStatus = statusFilter === "all" || trade.status === statusFilter;
-    return matchesSearch && matchesStatus;
+    const matchesRarity = rarityFilter === "all" || trade.rarity === rarityFilter;
+    return matchesSearch && matchesRarity;
   });
 
   const getStatusColor = (status: string) => {
@@ -96,25 +102,30 @@ const Trades = () => {
               </div>
             </div>
 
-            {/* Status Filter */}
+            {/* Rarity Filter */}
             <div>
-              <label className="text-sm font-medium mb-2 block">Status</label>
-              <Select value={statusFilter} onValueChange={setStatusFilter}>
+              <label className="text-sm font-medium mb-2 block">Rarity</label>
+              <Select value={rarityFilter} onValueChange={setRarityFilter}>
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">All Status</SelectItem>
-                  <SelectItem value="active">Active</SelectItem>
-                  <SelectItem value="pending">Pending</SelectItem>
-                  <SelectItem value="completed">Completed</SelectItem>
+                  <SelectItem value="all">All Rarities</SelectItem>
+                  <SelectItem value="Common">Common</SelectItem>
+                  <SelectItem value="Rare">Rare</SelectItem>
+                  <SelectItem value="Epic">Epic</SelectItem>
+                  <SelectItem value="Legendary">Legendary</SelectItem>
+                  <SelectItem value="Mythic">Mythic</SelectItem>
+                  <SelectItem value="Brainrot God">Brainrot God</SelectItem>
+                  <SelectItem value="Secret">Secret</SelectItem>
+                  <SelectItem value="OG">OG</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
-            {/* Sort */}
+            {/* Sort Time */}
             <div>
-              <label className="text-sm font-medium mb-2 block">Sort By</label>
+              <label className="text-sm font-medium mb-2 block">Sort Time</label>
               <Select value={sortBy} onValueChange={setSortBy}>
                 <SelectTrigger>
                   <SelectValue />
@@ -122,7 +133,41 @@ const Trades = () => {
                 <SelectContent>
                   <SelectItem value="recent">Most Recent</SelectItem>
                   <SelectItem value="oldest">Oldest First</SelectItem>
-                  <SelectItem value="trader">Trader Name</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Traits Filter */}
+            <div>
+              <label className="text-sm font-medium mb-2 block">Traits</label>
+              <div className="text-sm text-muted-foreground mb-2">
+                Upload trait icons in chat or provide URLs for me to download them
+              </div>
+              <div className="grid grid-cols-4 gap-2 p-2 border border-border rounded-md">
+                {/* Placeholder for trait icons */}
+                <div className="aspect-square bg-muted rounded border-2 border-dashed border-muted-foreground/50 flex items-center justify-center text-xs text-muted-foreground">
+                  Icons
+                </div>
+              </div>
+            </div>
+
+            {/* Mutations Filter */}
+            <div>
+              <label className="text-sm font-medium mb-2 block">Mutations</label>
+              <Select value={mutationFilter} onValueChange={setMutationFilter}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Mutations</SelectItem>
+                  <SelectItem value="Gold">Gold</SelectItem>
+                  <SelectItem value="Diamond">Diamond</SelectItem>
+                  <SelectItem value="Rainbow">Rainbow</SelectItem>
+                  <SelectItem value="Lava">Lava</SelectItem>
+                  <SelectItem value="Bloodrot">Bloodrot</SelectItem>
+                  <SelectItem value="Celestial">Celestial</SelectItem>
+                  <SelectItem value="Candy">Candy</SelectItem>
+                  <SelectItem value="Galaxy">Galaxy</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -214,7 +259,9 @@ const Trades = () => {
                   <p className="text-muted-foreground mb-4">No trades found matching your criteria</p>
                   <Button variant="outline" onClick={() => {
                     setSearchTerm("");
-                    setStatusFilter("all");
+                    setRarityFilter("all");
+                    setMutationFilter("all");
+                    setSelectedTraits([]);
                   }}>
                     Clear Filters
                   </Button>
