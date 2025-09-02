@@ -24,10 +24,10 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="sm" onClick={() => window.location.href = '/trades'}>
+          <Button variant="ghost" size="sm" onClick={() => window.location.href = '/auth'}>
             Sign In
           </Button>
-          <Button variant="neon" size="sm">
+          <Button variant="neon" size="sm" onClick={() => window.location.href = '/auth'}>
             Sign Up
           </Button>
         </div>

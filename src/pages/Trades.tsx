@@ -140,14 +140,38 @@ const Trades = () => {
             {/* Traits Filter */}
             <div>
               <label className="text-sm font-medium mb-2 block">Traits</label>
-              <div className="text-sm text-muted-foreground mb-2">
-                Upload trait icons in chat or provide URLs for me to download them
-              </div>
-              <div className="grid grid-cols-4 gap-2 p-2 border border-border rounded-md">
-                {/* Placeholder for trait icons */}
-                <div className="aspect-square bg-muted rounded border-2 border-dashed border-muted-foreground/50 flex items-center justify-center text-xs text-muted-foreground">
-                  Icons
-                </div>
+              <div className="grid grid-cols-5 gap-2 p-2 border border-border rounded-md">
+                {[
+                  { name: "Water", icon: "💧" },
+                  { name: "Ice", icon: "❄️" },
+                  { name: "Star", icon: "⭐" },
+                  { name: "Ghost", icon: "👻" },
+                  { name: "Plane", icon: "✈️" },
+                  { name: "TV", icon: "📺" },
+                  { name: "Fin", icon: "🐟" },
+                  { name: "Spider", icon: "🕷️" },
+                  { name: "Berry", icon: "🍓" },
+                  { name: "Taco", icon: "🌮" }
+                ].map((trait, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      const newTraits = selectedTraits.includes(trait.name)
+                        ? selectedTraits.filter(t => t !== trait.name)
+                        : [...selectedTraits, trait.name];
+                      setSelectedTraits(newTraits);
+                    }}
+                    className={`aspect-square rounded border-2 transition-all flex flex-col items-center justify-center text-xs p-1 ${
+                      selectedTraits.includes(trait.name)
+                        ? "border-primary bg-primary/10 text-primary"
+                        : "border-border hover:border-primary/50"
+                    }`}
+                    title={trait.name}
+                  >
+                    <span className="text-base">{trait.icon}</span>
+                    <span className="text-[10px] leading-tight">{trait.name}</span>
+                  </button>
+                ))}
               </div>
             </div>
 
