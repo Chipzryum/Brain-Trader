@@ -142,16 +142,34 @@ const Trades = () => {
               <label className="text-sm font-medium mb-2 block">Traits</label>
               <div className="grid grid-cols-5 gap-2 p-2 border border-border rounded-md">
                 {[
-                  { name: "Water", icon: "💧" },
-                  { name: "Ice", icon: "❄️" },
-                  { name: "Star", icon: "⭐" },
-                  { name: "Ghost", icon: "👻" },
-                  { name: "Plane", icon: "✈️" },
-                  { name: "TV", icon: "📺" },
-                  { name: "Fin", icon: "🐟" },
-                  { name: "Spider", icon: "🕷️" },
-                  { name: "Berry", icon: "🍓" },
-                  { name: "Taco", icon: "🌮" }
+                  { name: "Rain", img: "/traits/Wet.png" },
+                  { name: "Snowy", img: "/traits/Snowy.png" },
+                  { name: "Starfall", img: "/traits/Starfall.png" },
+                  { name: "Galactic", img: "/traits/Galactic.png" },
+                  { name: "Bombardiro Raid", img: "/traits/Bombardiro.png" },
+                  { name: "Matteo's Hat", img: "/traits/MatteoHat.png" },
+                  { name: "Spider", img: "/traits/Spider.png" },
+                  { name: "Strawberry", img: "/traits/Strawberry.png" },
+                  { name: "Taco", img: "/traits/Taco.png" },
+                  { name: "Tung Tung", img: "/traits/EvilTungTungSahur.png" },
+                  { name: "Glitch", img: "/traits/Glitch.png" },
+                  { name: "Crab Rave", img: "/traits/Crab.png" },
+                  { name: "Solar Flare", img: "/traits/SolarFlare.png" },
+                  { name: "Fire", img: "/traits/Fire.png" },
+                  { name: "Fireworks", img: "/traits/Fireworks.png" },
+                  { name: "Nyan Cats", img: "/traits/Nyan.png" },
+                  { name: "Disco", img: "/traits/Disco.png" },
+                  { name: "10B", img: "/traits/10b.png" },
+                  { name: "Bloodmoon", img: "/traits/Bloodmoon.png" },
+                  { name: "Brazil", img: "/traits/Brazil.png" },
+                  { name: "Bubblegum", img: "/traits/Bubblegum.png" },
+                  { name: "Rainbow", img: "/traits/Rainbowmachine.png" },
+                  { name: "Candy Aurora", img: "/traits/CandyAurora.png" },
+                  { name: "Matteo", img: "/traits/MatteoHat.png" },
+                  { name: "UFO", img: "/traits/Alienevent.png" },
+                  { name: "Sleepy", img: "/traits/Sleepy.png" },
+                  { name: "Mygame43", img: "/traits/MyGame43.png" }
+
                 ].map((trait, index) => (
                   <button
                     key={index}
@@ -168,7 +186,11 @@ const Trades = () => {
                     }`}
                     title={trait.name}
                   >
-                    <span className="text-base">{trait.icon}</span>
+                    <img
+                      src={trait.img}
+                      alt={trait.name}
+                      className="w-5 h-5 mb-1 object-contain"
+                    />
                     <span className="text-[10px] leading-tight">{trait.name}</span>
                   </button>
                 ))}
@@ -300,3 +322,8 @@ const Trades = () => {
 };
 
 export default Trades;
+
+// --- TRAIT IMAGE INSTRUCTIONS ---
+// Upload your trait images to /public/traits/ in your project directory.
+// Name them: water.png, ice.png, star.png, ghost.png, plane.png, tv.png, fin.png, spider.png, berry.png, taco.png
+// Recommended size: 20x20px (PNG or SVG).
