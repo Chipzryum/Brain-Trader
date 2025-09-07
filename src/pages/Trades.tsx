@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Search, Filter, ArrowUpDown } from "lucide-react";
 import TradeDetail from "@/components/TradeDetail";
+import CreateTradeForm from "@/components/CreateTradeForm";
 
 interface Trade {
   id: string;
@@ -238,11 +239,14 @@ const Trades = () => {
         {/* Main content */}
         <div className="flex-1 p-6">
           <div className="max-w-4xl mx-auto">
-            <div className="mb-6">
-              <h1 className="text-3xl font-bold mb-2">Active Trades</h1>
-              <p className="text-muted-foreground">
-                Found {filteredTrades.length} trades matching your criteria
-              </p>
+            <div className="mb-6 flex items-center justify-between">
+              <div>
+                <h1 className="text-3xl font-bold mb-2">Active Trades</h1>
+                <p className="text-muted-foreground">
+                  Found {filteredTrades.length} trades matching your criteria
+                </p>
+              </div>
+              <CreateTradeForm />
             </div>
 
             <div className="space-y-4">

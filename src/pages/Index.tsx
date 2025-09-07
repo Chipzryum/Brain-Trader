@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Marketplace from "@/components/Marketplace";
+import BrainRotSearch from "@/components/BrainRotSearch";
 
 const Index = () => {
   return (
@@ -10,6 +11,13 @@ const Index = () => {
         <Hero />
 
         <Marketplace />
+        
+        {/* Brain Rot Search Section */}
+        <section id="search" className="py-16 px-4">
+          <div className="container mx-auto">
+            <BrainRotSearch />
+          </div>
+        </section>
         
         {/* About Section */}
         <section id="about" className="py-16 px-4 bg-game-surface">
